@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Übungsmodus – AI Face Training</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+
+  <body>
+    <div class="bg"></div>
+
+    <header class="topbar">
+      <div class="brand">
+        <div class="logo" aria-hidden="true">◉</div>
+        <div class="brand-text">
+          <div class="brand-title">Übungsmodus</div>
+          <div class="brand-subtitle">Freies Üben: Echt vs. KI</div>
+        </div>
+      </div>
+
+      <nav class="top-actions" aria-label="Navigation">
+        <a class="ghost link" href="index.html">← Menü</a>
+      </nav>
+    </header>
+
+    <main class="container">
+      <section class="hero practice">
+        <div class="practice-top">
+          <div class="stats">
+            <div class="stat">
+              <div class="stat-label">Score</div>
+              <div class="stat-value" id="score">0</div>
+            </div>
+            <div class="stat">
+              <div class="stat-label">Streak</div>
+              <div class="stat-value" id="streak">0</div>
+            </div>
+            <div class="stat">
+              <div class="stat-label">Gesamt</div>
+              <div class="stat-value" id="total">0</div>
+            </div>
+          </div>
+
+          <div class="hint" id="hint">
+            Tipp: Verlass dich nicht auf Hautglätte oder “schöne” Bilder. Achte eher auf Gesamteindruck & Individualität.
+          </div>
+        </div>
+
+        <div class="frame" aria-live="polite">
+          <div class="img-wrap">
+            <img id="faceImg" alt="Gesicht für die Übung" />
+            <div class="badge" id="feedbackBadge" aria-hidden="true"></div>
+          </div>
+        </div>
+
+        <div class="actions">
+          <button class="primary" id="btnReal" type="button">Echt</button>
+          <button class="primary" id="btnFake" type="button">KI</button>
+          <button class="ghost" id="btnSkip" type="button">Überspringen</button>
+        </div>
+
+        <div class="feedback" id="feedback" role="status"></div>
+      </section>
+    </main>
+
+    <script src="practice.js"></script>
+  </body>
+</html>
