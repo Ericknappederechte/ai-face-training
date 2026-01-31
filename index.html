@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AI Face Training</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+
+  <body>
+    <div class="bg"></div>
+
+    <header class="topbar">
+      <div class="brand">
+        <div class="logo" aria-hidden="true">◉</div>
+        <div class="brand-text">
+          <div class="brand-title">AI Face Training</div>
+          <div class="brand-subtitle">Echte vs. KI-generierte Gesichter erkennen</div>
+        </div>
+      </div>
+
+      <nav class="top-actions" aria-label="Schnellaktionen">
+        <button class="ghost" type="button" id="btn-theme" aria-label="Theme umschalten">
+          Theme
+        </button>
+      </nav>
+    </header>
+
+    <main class="container">
+      <section class="hero">
+        <h1>Trainiere deine Wahrnehmung.</h1>
+        <p>
+          In diesem Training lernst du, echte Fotos und KI-generierte Gesichter besser zu unterscheiden –
+          mit klaren Durchläufen, Feedback und Auswertung.
+        </p>
+
+        <div class="menu" role="list">
+          <button class="card" role="listitem" id="btn-training" type="button">
+            <div class="card-icon" aria-hidden="true">🎯</div>
+            <div class="card-content">
+              <div class="card-title">Training starten</div>
+              <div class="card-desc">
+                Pre-Test → Training mit Feedback → Post-Test. Dauer ca. 8–12 Minuten.
+              </div>
+            </div>
+            <div class="card-arrow" aria-hidden="true">→</div>
+          </button>
+
+          <button class="card" role="listitem" id="btn-practice" type="button">
+            <div class="card-icon" aria-hidden="true">🧩</div>
+            <div class="card-content">
+              <div class="card-title">Übungsmodus</div>
+              <div class="card-desc">
+                Freies Üben ohne festen Ablauf. Ideal, um ein Gefühl zu entwickeln.
+              </div>
+            </div>
+            <div class="card-arrow" aria-hidden="true">→</div>
+          </button>
+
+          <button class="card" role="listitem" id="btn-about" type="button">
+            <div class="card-icon" aria-hidden="true">ℹ️</div>
+            <div class="card-content">
+              <div class="card-title">Über / Infos</div>
+              <div class="card-desc">
+                Hintergrund, Methodik, Hinweise & Datenschutz. (Kannst du später füllen.)
+              </div>
+            </div>
+            <div class="card-arrow" aria-hidden="true">→</div>
+          </button>
+        </div>
+
+        <footer class="footer">
+          <span>Made for browser-based testing • GitHub Pages ready</span>
+          <span class="dot">•</span>
+          <span id="status">Bereit</span>
+        </footer>
+      </section>
+    </main>
+
+    <script src="app.js"></script>
+  </body>
+</html>
