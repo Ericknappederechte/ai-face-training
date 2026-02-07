@@ -33,9 +33,7 @@ body {
   overflow-x: hidden;
 }
 
-/* =========================
-   Hintergrund & Topbar
-   ========================= */
+/* Hintergrund */
 .bg {
   position: fixed;
   inset: 0;
@@ -46,6 +44,7 @@ body {
     radial-gradient(900px 500px at 50% 90%, rgba(255, 99, 190, 0.16), transparent 60%);
 }
 
+/* Topbar */
 .topbar {
   position: sticky;
   top: 0;
@@ -87,9 +86,7 @@ body {
   color: var(--muted);
 }
 
-/* =========================
-   Buttons & Layout
-   ========================= */
+/* Buttons */
 button {
   font: inherit;
   color: inherit;
@@ -125,9 +122,7 @@ button {
   cursor: not-allowed;
 }
 
-/* =========================
-   Container
-   ========================= */
+/* Container / Hero (Default) */
 .container {
   max-width: 980px;
   margin: 0 auto;
@@ -147,198 +142,150 @@ button {
 }
 
 /* =========================
-   PRACTICE MODE
-   ========================= */
-body.practice-page {
-  overflow: hidden;
-}
-
-.practice {
-  min-height: calc(100vh - 86px);
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-
-.practice-top {
-  flex: 0 0 auto;
-}
-
-.stats {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 8px;
-}
-
-.stat {
-  padding: 10px 12px;
-  border-radius: 14px;
-  border: 1px solid var(--border);
-  background: var(--card);
-}
-
-.stat-label {
-  font-size: 12px;
-  color: var(--muted2);
-}
-
-.stat-value {
-  font-size: 18px;
-  font-weight: 800;
-}
-
-/* =========================
-   Bildbereich
-   ========================= */
-.frame {
-  flex: 1 1 auto;
-  display: grid;
-  place-items: center;
-}
-
-.img-wrap {
-  width: min(560px, 92vw);
-  height: min(56vh, 560px);
-  border-radius: 22px;
-  overflow: hidden;
-  border: 1px solid var(--border);
-  background: rgba(0,0,0,0.25);
-  box-shadow: var(--shadow);
-  position: relative;
-}
-
-.img-wrap img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  display: block;
-}
-
-/* =========================
-   Feedback & Weiter
-   ========================= */
-.under-image {
-  display: grid;
-  justify-items: center;
-  gap: 10px;
-  margin-top: 8px;
-}
-
-.feedback.big {
-  font-size: 20px;
-  font-weight: 900;
-  min-height: 28px;
-}
-
-.feedback.ok { color: rgba(120,255,170,0.95); }
-.feedback.bad { color: rgba(255,140,140,0.95); }
-
-.ghost.next {
-  padding: 12px 20px;
-  border-radius: 14px;
-  min-width: 160px;
-}
-
-/* =========================
-   Actions
-   ========================= */
-.actions {
-  display: flex;
-  justify-content: center;
-  gap: 12px;
-}
-
-/* =========================
-   Mobile
-   ========================= */
-@media (max-width: 520px) {
-  .img-wrap {
-    width: 94vw;
-    height: 48vh;
-  }
-
-  .feedback.big {
-    font-size: 18px;
-  }
-}
-
-/* =========================
-   HARD FIX: Practice = 1 Viewport, no scroll
+   PRACTICE MODE: 1 viewport
    ========================= */
 body.practice-page {
   height: 100vh;
   overflow: hidden; /* keine Scrollbars */
 }
 
-body.practice-page .topbar {
-  position: sticky;
-  top: 0;
-}
-
-/* Container bekommt eine feste Höhe (Viewport minus Topbar) */
+/* Container volle Breite, fixe Höhe */
 body.practice-page .practice-container {
-  height: calc(100vh - 86px); /* 86px = Topbar-Höhe (passt bei deinem Layout) */
-  padding: 14px 20px;         /* weniger Padding -> weniger Scroll-Risiko */
+  max-width: none;
+  width: 100%;
+  height: calc(100vh - 86px); /* Topbar-Höhe */
+  padding: 12px;              /* weniger Seitenrand */
   overflow: hidden;
 }
 
-/* Hero füllt die Containerhöhe komplett */
+/* Hero füllt die Fläche */
 body.practice-page .hero.practice {
   height: 100%;
-  padding: 18px;   /* kompakter */
+  padding: 18px;
   display: flex;
   flex-direction: column;
   gap: 10px;
   overflow: hidden;
 }
 
-/* Stats kompakter */
+/* Stats kompakt */
 body.practice-page .stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
   gap: 8px;
 }
+
 body.practice-page .stat {
   padding: 10px 12px;
-}
-body.practice-page .stat-value {
-  font-size: 18px;
+  border-radius: 14px;
+  border: 1px solid var(--border);
+  background: var(--card);
 }
 
-/* Bildbereich nimmt den verfügbaren Rest */
+body.practice-page .stat-label {
+  font-size: 12px;
+  color: var(--muted2);
+}
+
+body.practice-page .stat-value {
+  font-size: 18px;
+  font-weight: 800;
+}
+
+/* Bildbereich nimmt Restplatz */
 body.practice-page .frame {
   flex: 1 1 auto;
-  min-height: 0; /* super wichtig für Flexbox, verhindert Overflow */
+  min-height: 0; /* wichtig: verhindert overflow */
   display: grid;
   place-items: center;
 }
 
-/* Bildhöhe dynamisch, aber garantiert unterhalb von Buttons/Feedback */
+/* Bild groß, wenig Rand */
 body.practice-page .img-wrap {
-  width: min(560px, 92vw);
-  height: min(50vh, 480px); /* vorher war es zu groß -> scroll */
+  width: min(860px, 98vw);
+  height: min(54vh, 560px);
+  border-radius: 22px;
+  overflow: visible; /* damit Badge außen sichtbar ist */
+  border: 1px solid var(--border);
+  background: rgba(0,0,0,0.25);
+  box-shadow: var(--shadow);
+  position: relative;
 }
 
-/* Buttons/Feedback unten kompakt */
+/* Innerer "Rahmen" fürs Bild (weil img-wrap overflow: visible) */
+body.practice-page .img-wrap img {
+  width: 100%;
+  height: 100%;
+  border-radius: 22px;
+  object-fit: cover;
+  display: block;
+  background: transparent;
+}
+
+/* Actions */
 body.practice-page .actions {
-  flex: 0 0 auto;
+  display: flex;
   justify-content: center;
-  gap: 10px;
-}
-
-body.practice-page .under-image {
+  gap: 12px;
   flex: 0 0 auto;
-  margin-top: 4px;
-  gap: 8px;
 }
 
-body.practice-page .feedback.big {
-  font-size: 19px;
-  min-height: 26px;
+/* Unter dem Bild: nur Weiter-Button (Text wird ausgeblendet) */
+body.practice-page .under-image {
+  display: grid;
+  justify-items: center;
+  gap: 10px;
+  margin-top: 6px;
+  flex: 0 0 auto;
 }
 
-/* Mobile: noch etwas kleiner */
+/* Text-Feedback AUS (wie gewünscht) */
+body.practice-page .feedback {
+  display: none;
+}
+
+body.practice-page .ghost.next {
+  padding: 12px 20px;
+  border-radius: 14px;
+  min-width: 160px;
+}
+
+/* =========================
+   Badge: ✓ / ✕ neben Bild
+   ========================= */
+.badge {
+  position: absolute;
+  top: 50%;
+  right: -68px;
+  transform: translateY(-50%);
+  width: 72px;
+  height: 72px;
+  border-radius: 20px;
+  font-size: 40px;
+  font-weight: 900;
+  display: grid;
+  place-items: center;
+  background: rgba(0, 0, 0, 0.45);
+  border: 2px solid var(--border);
+  backdrop-filter: blur(8px);
+  opacity: 0;
+  transition: opacity 0.15s ease;
+}
+
+.badge.ok,
+.badge.bad {
+  opacity: 1;
+}
+
+.badge.ok { color: rgb(120, 255, 170); }
+.badge.bad { color: rgb(255, 140, 140); }
+
+/* =========================
+   Mobile
+   ========================= */
 @media (max-width: 520px) {
   body.practice-page .practice-container {
-    padding: 12px 14px;
+    padding: 10px;
     height: calc(100vh - 86px);
   }
 
@@ -347,7 +294,72 @@ body.practice-page .feedback.big {
   }
 
   body.practice-page .img-wrap {
-    width: 94vw;
-    height: 46vh;
+    width: 98vw;
+    height: 48vh;
   }
+
+  .badge {
+  position: absolute;
+  top: 50%;
+  right: -96px;                 /* weiter weg vom Bild */
+  transform: translateY(-50%);
+  width: 74px;
+  height: 74px;
+  border-radius: 22px;          /* schöner/modern */
+  font-size: 40px;
+  font-weight: 900;
+  display: grid;
+  place-items: center;
+
+  background: rgba(255, 255, 255, 0.10);
+  border: 1px solid var(--border);
+  backdrop-filter: blur(10px);
+
+  box-shadow:
+    0 16px 40px rgba(0,0,0,0.25),
+    0 0 0 6px rgba(0,0,0,0.06);
+
+  opacity: 0;
+  transition: opacity 0.15s ease, transform 0.15s ease;
+}
+
+.badge.ok,
+.badge.bad {
+  opacity: 1;
+  transform: translateY(-50%) scale(1.03);
+}
+
+.badge.ok { color: rgb(120, 255, 170); }
+.badge.bad { color: rgb(255, 140, 140); }
+
+/* Mobile: etwas näher ran */
+@media (max-width: 520px) {
+  .badge {
+    right: -74px;
+    width: 62px;
+    height: 62px;
+    font-size: 34px;
+  }
+}
+
+}
+
+body.practice-page .img-wrap {
+  width: min(860px, 98vw);
+  height: min(54vh, 560px);
+  border-radius: 22px;
+  overflow: visible;            /* Badge außen sichtbar */
+  border: 1px solid var(--border);
+  background: transparent;      /* keine grauen Flächen */
+  box-shadow: var(--shadow);
+  position: relative;
+}
+
+body.practice-page .img-wrap img {
+  width: 100%;
+  height: 100%;
+  border-radius: 22px;
+  object-fit: cover;            /* WICHTIG: füllt den Frame */
+  object-position: center;
+  display: block;
 }
