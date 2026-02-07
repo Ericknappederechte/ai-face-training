@@ -33,6 +33,9 @@ body {
   overflow-x: hidden;
 }
 
+/* =========================
+   Hintergrund & Topbar
+   ========================= */
 .bg {
   position: fixed;
   inset: 0;
@@ -41,7 +44,6 @@ body {
     radial-gradient(900px 450px at 20% 15%, rgba(113, 82, 255, 0.25), transparent 60%),
     radial-gradient(700px 380px at 80% 20%, rgba(0, 220, 255, 0.22), transparent 55%),
     radial-gradient(900px 500px at 50% 90%, rgba(255, 99, 190, 0.16), transparent 60%);
-  filter: saturate(1.2);
 }
 
 .topbar {
@@ -79,23 +81,15 @@ body {
   box-shadow: var(--shadow);
 }
 
-.brand-title {
-  font-weight: 800;
-  letter-spacing: 0.2px;
-}
-
+.brand-title { font-weight: 800; }
 .brand-subtitle {
   font-size: 13px;
   color: var(--muted);
-  margin-top: 2px;
 }
 
-.top-actions {
-  display: flex;
-  gap: 10px;
-  align-items: center;
-}
-
+/* =========================
+   Buttons & Layout
+   ========================= */
 button {
   font: inherit;
   color: inherit;
@@ -105,11 +99,11 @@ button {
 }
 
 .ghost {
-  padding: 10px 12px;
+  padding: 10px 14px;
   border-radius: 12px;
   border: 1px solid var(--border);
   background: var(--card);
-  transition: transform 0.15s ease, background 0.15s ease;
+  transition: background 0.15s ease, transform 0.15s ease;
 }
 
 .ghost:hover {
@@ -117,14 +111,31 @@ button {
   transform: translateY(-1px);
 }
 
+.primary {
+  padding: 12px 18px;
+  border-radius: 14px;
+  border: 1px solid var(--border);
+  background: rgba(255, 255, 255, 0.10);
+  font-weight: 800;
+}
+
+.primary:disabled,
+.ghost:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+/* =========================
+   Container
+   ========================= */
 .container {
   max-width: 980px;
   margin: 0 auto;
-  padding: 38px 20px 46px;
+  padding: 24px 20px 32px;
 }
 
 .hero {
-  padding: 34px;
+  padding: 28px;
   border-radius: 26px;
   border: 1px solid var(--border);
   background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.03));
@@ -135,121 +146,32 @@ button {
   background: linear-gradient(180deg, rgba(255,255,255,0.95), rgba(255,255,255,0.75));
 }
 
-h1 {
-  font-size: clamp(28px, 4vw, 44px);
-  margin: 0 0 10px;
-  letter-spacing: -0.3px;
+/* =========================
+   PRACTICE MODE
+   ========================= */
+body.practice-page {
+  overflow: hidden;
 }
 
-.hero p {
-  margin: 0 0 26px;
-  color: var(--muted);
-  line-height: 1.55;
-  max-width: 70ch;
-}
-
-.menu {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 14px;
-}
-
-@media (min-width: 840px) {
-  .menu {
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 14px;
-  }
-}
-
-.card {
-  text-align: left;
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  padding: 16px 16px;
-  border-radius: var(--radius);
-  background: var(--card);
-  border: 1px solid var(--border);
-  transition: transform 0.15s ease, background 0.15s ease, border-color 0.15s ease;
-  min-height: 92px;
-}
-
-.card:hover {
-  background: var(--card-hover);
-  transform: translateY(-2px);
-  border-color: rgba(255,255,255,0.22);
-}
-
-:root[data-theme="light"] .card:hover {
-  border-color: rgba(0,0,0,0.18);
-}
-
-.card-icon {
-  width: 44px;
-  height: 44px;
-  border-radius: 14px;
-  display: grid;
-  place-items: center;
-  background: rgba(255,255,255,0.10);
-  border: 1px solid var(--border);
-}
-
-.card-title {
-  font-weight: 800;
-  margin-bottom: 4px;
-}
-
-.card-desc {
-  font-size: 13px;
-  color: var(--muted2);
-  line-height: 1.35;
-}
-
-.card-arrow {
-  margin-left: auto;
-  opacity: 0.7;
-  font-size: 18px;
-}
-
-.footer {
-  margin-top: 26px;
-  display: flex;
-  gap: 10px;
-  flex-wrap: wrap;
-  align-items: center;
-  color: var(--muted2);
-  font-size: 12.5px;
-}
-
-.dot { opacity: 0.6; }
-
-/* Links wie Buttons */
-.link {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  text-decoration: none;
-}
-
-/* Practice Layout */
 .practice {
-  display: grid;
-  gap: 18px;
+  min-height: calc(100vh - 86px);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
 }
 
 .practice-top {
-  display: grid;
-  gap: 14px;
+  flex: 0 0 auto;
 }
 
 .stats {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 10px;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
 }
 
 .stat {
-  padding: 12px 12px;
+  padding: 10px 12px;
   border-radius: 14px;
   border: 1px solid var(--border);
   background: var(--card);
@@ -261,32 +183,26 @@ h1 {
 }
 
 .stat-value {
-  font-size: 20px;
+  font-size: 18px;
   font-weight: 800;
-  margin-top: 2px;
 }
 
-.hint {
-  padding: 12px 14px;
-  border-radius: 14px;
-  border: 1px dashed var(--border);
-  color: var(--muted);
-  background: rgba(255, 255, 255, 0.04);
-  line-height: 1.45;
-}
-
+/* =========================
+   Bildbereich
+   ========================= */
 .frame {
+  flex: 1 1 auto;
   display: grid;
   place-items: center;
 }
 
 .img-wrap {
-  width: min(560px, 100%);
-  aspect-ratio: 1 / 1;
+  width: min(560px, 92vw);
+  height: min(56vh, 560px);
   border-radius: 22px;
   overflow: hidden;
   border: 1px solid var(--border);
-  background: rgba(255, 255, 255, 0.04);
+  background: rgba(0,0,0,0.25);
   box-shadow: var(--shadow);
   position: relative;
 }
@@ -294,69 +210,144 @@ h1 {
 .img-wrap img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
   display: block;
 }
 
-.badge {
-  position: absolute;
-  top: 14px;
-  right: 14px;
-  width: 42px;
-  height: 42px;
-  border-radius: 14px;
+/* =========================
+   Feedback & Weiter
+   ========================= */
+.under-image {
   display: grid;
-  place-items: center;
+  justify-items: center;
+  gap: 10px;
+  margin-top: 8px;
+}
+
+.feedback.big {
+  font-size: 20px;
   font-weight: 900;
-  border: 1px solid var(--border);
-  background: rgba(255, 255, 255, 0.08);
-  backdrop-filter: blur(8px);
-  opacity: 0;
-  transform: translateY(-4px);
-  transition: opacity 0.15s ease, transform 0.15s ease;
+  min-height: 28px;
 }
 
-.badge.ok,
-.badge.bad {
-  opacity: 1;
-  transform: translateY(0);
+.feedback.ok { color: rgba(120,255,170,0.95); }
+.feedback.bad { color: rgba(255,140,140,0.95); }
+
+.ghost.next {
+  padding: 12px 20px;
+  border-radius: 14px;
+  min-width: 160px;
 }
 
+/* =========================
+   Actions
+   ========================= */
 .actions {
   display: flex;
+  justify-content: center;
   gap: 12px;
-  flex-wrap: wrap;
 }
 
-.primary {
-  padding: 12px 14px;
-  border-radius: 14px;
-  border: 1px solid var(--border);
-  background: rgba(255, 255, 255, 0.10);
-  transition: transform 0.15s ease, background 0.15s ease;
-  font-weight: 750;
+/* =========================
+   Mobile
+   ========================= */
+@media (max-width: 520px) {
+  .img-wrap {
+    width: 94vw;
+    height: 48vh;
+  }
+
+  .feedback.big {
+    font-size: 18px;
+  }
 }
 
-.primary:hover {
-  background: rgba(255, 255, 255, 0.14);
-  transform: translateY(-1px);
+/* =========================
+   HARD FIX: Practice = 1 Viewport, no scroll
+   ========================= */
+body.practice-page {
+  height: 100vh;
+  overflow: hidden; /* keine Scrollbars */
 }
 
-.primary:disabled,
-.ghost:disabled {
-  opacity: 0.55;
-  cursor: not-allowed;
+body.practice-page .topbar {
+  position: sticky;
+  top: 0;
 }
 
-.feedback {
-  min-height: 22px;
-  color: var(--muted);
+/* Container bekommt eine feste Höhe (Viewport minus Topbar) */
+body.practice-page .practice-container {
+  height: calc(100vh - 86px); /* 86px = Topbar-Höhe (passt bei deinem Layout) */
+  padding: 14px 20px;         /* weniger Padding -> weniger Scroll-Risiko */
+  overflow: hidden;
 }
 
-.feedback.ok {
-  color: rgba(120, 255, 170, 0.9);
+/* Hero füllt die Containerhöhe komplett */
+body.practice-page .hero.practice {
+  height: 100%;
+  padding: 18px;   /* kompakter */
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  overflow: hidden;
 }
 
-.feedback.bad {
-  color: rgba(255, 140, 140, 0.9);
+/* Stats kompakter */
+body.practice-page .stats {
+  gap: 8px;
+}
+body.practice-page .stat {
+  padding: 10px 12px;
+}
+body.practice-page .stat-value {
+  font-size: 18px;
+}
+
+/* Bildbereich nimmt den verfügbaren Rest */
+body.practice-page .frame {
+  flex: 1 1 auto;
+  min-height: 0; /* super wichtig für Flexbox, verhindert Overflow */
+  display: grid;
+  place-items: center;
+}
+
+/* Bildhöhe dynamisch, aber garantiert unterhalb von Buttons/Feedback */
+body.practice-page .img-wrap {
+  width: min(560px, 92vw);
+  height: min(50vh, 480px); /* vorher war es zu groß -> scroll */
+}
+
+/* Buttons/Feedback unten kompakt */
+body.practice-page .actions {
+  flex: 0 0 auto;
+  justify-content: center;
+  gap: 10px;
+}
+
+body.practice-page .under-image {
+  flex: 0 0 auto;
+  margin-top: 4px;
+  gap: 8px;
+}
+
+body.practice-page .feedback.big {
+  font-size: 19px;
+  min-height: 26px;
+}
+
+/* Mobile: noch etwas kleiner */
+@media (max-width: 520px) {
+  body.practice-page .practice-container {
+    padding: 12px 14px;
+    height: calc(100vh - 86px);
+  }
+
+  body.practice-page .hero.practice {
+    padding: 14px;
+  }
+
+  body.practice-page .img-wrap {
+    width: 94vw;
+    height: 46vh;
+  }
 }

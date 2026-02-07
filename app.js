@@ -9,10 +9,13 @@ function setTheme(theme) {
 }
 
 function getTheme() {
-  return localStorage.getItem("theme") || "dark";
+  // Standard: light
+  return localStorage.getItem("theme") || "light";
 }
 
+// Init Theme (persistiert über Seiten)
 setTheme(getTheme());
+statusEl.textContent = `Theme: ${root.dataset.theme}`;
 
 btnTheme.addEventListener("click", () => {
   const next = root.dataset.theme === "dark" ? "light" : "dark";
@@ -20,15 +23,14 @@ btnTheme.addEventListener("click", () => {
   statusEl.textContent = `Theme: ${next}`;
 });
 
-// Buttons (du kannst später echte Seiten/Routes machen)
+// Buttons
 document.getElementById("btn-training").addEventListener("click", () => {
   statusEl.textContent = "Training: (coming next) – wir bauen als nächstes den Ablauf";
   // window.location.href = "training.html";
 });
 
 document.getElementById("btn-practice").addEventListener("click", () => {
-  statusEl.textContent = "Übungsmodus: (coming next) – wir bauen als nächstes den freien Modus";
-  // window.location.href = "practice.html";
+  window.location.href = "practice.html";
 });
 
 document.getElementById("btn-about").addEventListener("click", () => {
