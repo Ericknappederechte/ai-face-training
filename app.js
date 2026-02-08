@@ -1,39 +1,27 @@
-// Minimal: Theme Toggle + Platzhalter-Navigation
-const root = document.documentElement;
-const btnTheme = document.getElementById("btn-theme");
-const statusEl = document.getElementById("status");
-
-function setTheme(theme) {
-  root.dataset.theme = theme;
+// Theme: Standard = light, über alle Seiten hinweg
+(function initTheme() {
+  const saved = localStorage.getItem("theme");
+  const theme = saved || "light";
+  document.documentElement.dataset.theme = theme;
   localStorage.setItem("theme", theme);
+})();
+
+// Safe-Helper, damit nichts crasht wenn IDs mal fehlen
+function onClick(id, fn) {
+  const el = document.getElementById(id);
+  if (el) el.addEventListener("click", fn);
 }
 
-function getTheme() {
-  // Standard: light
-  return localStorage.getItem("theme") || "light";
-}
-
-// Init Theme (persistiert über Seiten)
-setTheme(getTheme());
-statusEl.textContent = `Theme: ${root.dataset.theme}`;
-
-btnTheme.addEventListener("click", () => {
-  const next = root.dataset.theme === "dark" ? "light" : "dark";
-  setTheme(next);
-  statusEl.textContent = `Theme: ${next}`;
+// Navigation
+onClick("btn-pretest", () => {
+  // Pretest-Seite (bauen wir als nächstes)
+  window.location.href = "pretest.html";
 });
 
-// Buttons
-document.getElementById("btn-training").addEventListener("click", () => {
-  statusEl.textContent = "Training: (coming next) – wir bauen als nächstes den Ablauf";
-  // window.location.href = "training.html";
-});
-
-document.getElementById("btn-practice").addEventListener("click", () => {
+onClick("btn-practice", () => {
   window.location.href = "practice.html";
 });
 
-document.getElementById("btn-about").addEventListener("click", () => {
-  statusEl.textContent = "Über/Infos: (coming next) – z.B. Methodik, Datenschutz, Credits";
-  // window.location.href = "about.html";
+onClick("btn-info", () => {
+  window.location.href = "info.html";
 });

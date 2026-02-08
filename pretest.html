@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Pretest – AI Face Training</title>
+<link rel="stylesheet" href="styles.css" />
+</head>
+
+<body class="practice-page">
+
+<div class="bg"></div>
+
+<header class="topbar">
+  <div class="brand">
+    <div class="logo">◉</div>
+    <div>
+      <div class="brand-title">Pretest</div>
+      <div class="brand-subtitle">Ohne Tipps – nur Intuition</div>
+    </div>
+  </div>
+
+  <a class="ghost link" href="index.html">← Menü</a>
+</header>
+
+<main class="practice-container">
+<section class="hero practice">
+
+<div class="practice-top">
+  <div class="stats">
+    <div class="stat">
+      <div class="stat-label">Fortschritt</div>
+      <div class="stat-value" id="progress">1/30</div>
+    </div>
+
+    <div class="stat">
+      <div class="stat-label">Richtig</div>
+      <div class="stat-value" id="score">0</div>
+    </div>
+
+    <div class="stat">
+      <div class="stat-label">Gesamt</div>
+      <div class="stat-value" id="total">0</div>
+    </div>
+  </div>
+</div>
+
+<div class="practice-row">
+
+  <div class="img-wrap">
+    <img id="faceImg" />
+  </div>
+
+  <div class="side-controls">
+
+    <button class="primary big" id="btnReal">Echt</button>
+    <button class="primary big" id="btnFake">KI</button>
+
+    <div class="result-box">
+      <div class="badge" id="feedbackBadge"></div>
+      <div class="result-text" id="resultText"></div>
+    </div>
+
+    <button class="ghost next" id="btnNext" disabled>Weiter</button>
+
+  </div>
+
+</div>
+
+</section>
+</main>
+
+<script src="pretest.js"></script>
+</body>
+</html>

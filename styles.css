@@ -168,3 +168,111 @@ button {
   margin-top: 8px;
   font-weight: 700;
 }
+
+/* =========================
+   SIMPLE MENU
+   ========================= */
+
+.menu-simple {
+  height: calc(100vh - 80px);
+  display: grid;
+  place-items: center;
+}
+
+.menu-center {
+  text-align: center;
+}
+
+.menu-title {
+  font-size: 42px;
+  margin-bottom: 40px;
+  letter-spacing: -0.5px;
+}
+
+.menu-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  align-items: center;
+}
+
+.menu-btn {
+  width: 260px;
+  padding: 18px 20px;
+  font-size: 20px;
+  font-weight: 700;
+  border-radius: 18px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  transition: transform 0.15s ease, background 0.15s ease, box-shadow 0.15s ease;
+}
+
+.menu-btn:hover {
+  transform: translateY(-2px);
+  background: var(--card-hover);
+  box-shadow: var(--shadow);
+}
+/* =========================
+   HOME (Startseite) – fix: alle Buttons gleich
+   ========================= */
+body.home-page {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+}
+
+.home {
+  width: min(720px, 92vw);
+  display: grid;
+  justify-items: center;
+  gap: 18px;
+  padding: 28px 18px;
+}
+
+.home-title {
+  margin: 0;
+  font-size: clamp(34px, 5vw, 56px);
+  letter-spacing: -0.6px;
+}
+
+.home-actions {
+  width: min(420px, 92vw);
+  display: grid;
+  gap: 18px;
+}
+
+.home-btn {
+  width: 100%;
+  padding: 18px 22px;
+  border-radius: 18px;
+  border: 1px solid var(--border);
+  background: rgba(0, 0, 0, 0.06);
+  color: var(--text);
+  font-weight: 800;
+  font-size: 22px;
+  cursor: pointer;
+  transition: transform 0.12s ease, background 0.12s ease, border-color 0.12s ease;
+}
+
+:root[data-theme="light"] .home-btn {
+  background: rgba(0, 0, 0, 0.06);
+}
+
+:root:not([data-theme="light"]) .home-btn {
+  background: rgba(255, 255, 255, 0.10);
+}
+
+.home-btn:hover {
+  transform: translateY(-1px);
+  background: var(--card-hover);
+  border-color: rgba(0,0,0,0.18);
+}
+
+:root:not([data-theme="light"]) .home-btn:hover {
+  border-color: rgba(255,255,255,0.22);
+}
+
+.home-btn:active {
+  transform: translateY(0px);
+}
