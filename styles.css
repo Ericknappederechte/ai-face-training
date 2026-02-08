@@ -276,3 +276,371 @@ body.home-page {
 .home-btn:active {
   transform: translateY(0px);
 }
+
+/* =========================
+   PRETEST RESULT MODAL (groß + Tabelle)
+   ========================= */
+
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: none; /* wird per JS auf flex gesetzt */
+  align-items: center;
+  justify-content: center;
+  padding: 18px;
+  background: rgba(0, 0, 0, 0.55);
+  backdrop-filter: blur(8px);
+}
+
+.modal-overlay.open {
+  display: flex;
+}
+
+.modal {
+  width: min(1200px, 98vw);
+  height: min(820px, 92vh);
+  border-radius: 22px;
+  border: 1px solid var(--border);
+  background: var(--bg);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+:root[data-theme="light"] .modal {
+  background: rgba(255, 255, 255, 0.92);
+}
+
+.modal-header {
+  padding: 18px 18px 12px;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.modal-title {
+  margin: 0;
+  font-size: 22px;
+  font-weight: 900;
+}
+
+.modal-subtitle {
+  margin: 4px 0 0;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.modal-close {
+  padding: 10px 12px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  background: var(--card);
+}
+
+.modal-body {
+  padding: 14px 18px 18px;
+  overflow: auto;
+  flex: 1 1 auto;
+}
+
+.modal-summary {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+
+.pill {
+  padding: 10px 12px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: var(--card);
+  font-weight: 800;
+}
+
+.pill.ok {
+  color: rgba(120, 255, 170, 0.95);
+}
+.pill.bad {
+  color: rgba(255, 140, 140, 0.95);
+}
+
+.result-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+@media (max-width: 900px) {
+  .result-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.result-panel {
+  border-radius: 18px;
+  border: 1px solid var(--border);
+  background: var(--card);
+  overflow: hidden;
+}
+
+.result-panel h3 {
+  margin: 0;
+  padding: 12px 14px;
+  border-bottom: 1px solid var(--border);
+  font-size: 16px;
+  font-weight: 900;
+}
+
+.result-table-wrap {
+  max-height: 56vh;
+  overflow: auto;
+}
+
+.result-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.result-table th,
+.result-table td {
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--border);
+  text-align: left;
+  vertical-align: top;
+}
+
+.result-table th {
+  position: sticky;
+  top: 0;
+  background: var(--bg);
+  z-index: 1;
+}
+
+:root[data-theme="light"] .result-table th {
+  background: rgba(255, 255, 255, 0.96);
+}
+
+.filecell {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+  font-size: 12.5px;
+  word-break: break-all;
+}
+
+.tag {
+  display: inline-block;
+  padding: 3px 8px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: rgba(0,0,0,0.06);
+  font-weight: 800;
+}
+
+:root:not([data-theme="light"]) .tag {
+  background: rgba(255,255,255,0.08);
+}
+
+.tag.real { }
+.tag.fake { }
+
+.modal-footer {
+  padding: 14px 18px;
+  border-top: 1px solid var(--border);
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+}
+
+/* =========================
+   PRETEST RESULT MODAL (GROSS)
+   ========================= */
+
+.modal {
+  position: fixed;
+  inset: 0;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 18px;
+  background: rgba(0, 0, 0, 0.55);
+  backdrop-filter: blur(8px);
+  z-index: 9999;
+}
+
+.modal.open {
+  display: flex;
+}
+
+.modal-card {
+  width: min(1200px, 94vw);
+  height: min(82vh, 900px);
+  border-radius: 22px;
+  border: 1px solid var(--border);
+  background: var(--bg);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Kopfzeile */
+.modal-head {
+  padding: 18px 18px 12px;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.modal-title {
+  font-size: 22px;
+  font-weight: 900;
+}
+
+.modal-subtitle {
+  margin-top: 6px;
+  color: var(--muted);
+}
+
+.modal-actions {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+/* Summary Pills */
+.modal-summary {
+  padding: 12px 18px 6px;
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.pill {
+  padding: 8px 10px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: var(--card);
+  font-weight: 800;
+  font-size: 13px;
+}
+
+.pill.ok {
+  color: rgb(120, 255, 170);
+}
+
+.pill.bad {
+  color: rgb(255, 140, 140);
+}
+
+/* 2 Spalten Inhalt */
+.modal-grid {
+  padding: 12px 18px 18px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  flex: 1 1 auto;
+  min-height: 0;
+}
+
+.modal-panel {
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  background: var(--card);
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+
+.panel-title {
+  font-weight: 900;
+  margin-bottom: 10px;
+}
+
+/* Panels scrollen innen */
+#correctWrap,
+#wrongWrap {
+  overflow: auto;
+  min-height: 0;
+  padding-right: 6px;
+}
+
+/* Tabelle */
+.result-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  overflow: hidden;
+  border-radius: 14px;
+}
+
+.result-table thead th {
+  text-align: left;
+  font-size: 12px;
+  color: var(--muted2);
+  padding: 10px 10px;
+  border-bottom: 1px solid var(--border);
+}
+
+.result-table tbody td {
+  padding: 10px 10px;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  vertical-align: middle;
+  font-size: 13px;
+}
+
+:root[data-theme="light"] .result-table tbody td {
+  border-bottom: 1px solid rgba(0,0,0,0.08);
+}
+
+.result-table tbody tr:hover td {
+  background: rgba(255,255,255,0.06);
+}
+
+:root[data-theme="light"] .result-table tbody tr:hover td {
+  background: rgba(0,0,0,0.04);
+}
+
+.filecell {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  font-size: 12px;
+  opacity: 0.95;
+  word-break: break-all;
+}
+
+/* Tag für Labels */
+.tag {
+  display: inline-flex;
+  padding: 5px 8px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: rgba(255,255,255,0.10);
+  font-weight: 800;
+  font-size: 12px;
+}
+
+:root[data-theme="light"] .tag {
+  background: rgba(0,0,0,0.06);
+}
+
+.tag.real { color: rgba(120, 255, 170, 0.95); }
+.tag.fake { color: rgba(255, 140, 140, 0.95); }
+
+/* Mobile: Modal 1 Spalte */
+@media (max-width: 900px) {
+  .modal-card {
+    width: 96vw;
+    height: 86vh;
+  }
+  .modal-grid {
+    grid-template-columns: 1fr;
+  }
+}
