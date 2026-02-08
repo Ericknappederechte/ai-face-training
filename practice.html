@@ -1,70 +1,74 @@
 <!doctype html>
 <html lang="de">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Übungsmodus – AI Face Training</title>
-  <link rel="stylesheet" href="styles.css" />
-</head>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Übungsmodus – AI Face Training</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
 
-<body class="practice-page">
+  <body class="practice-page">
+    <div class="bg"></div>
 
-  <div class="bg"></div>
-
-  <header class="topbar">
-    <div class="brand">
-      <div class="logo">◉</div>
-      <div>
-        <div class="brand-title">Übungsmodus</div>
-        <div class="brand-subtitle">Freies Üben: Echt vs. KI</div>
-      </div>
-    </div>
-    <a class="ghost link" href="index.html">← Menü</a>
-  </header>
-
-  <main class="practice-container">
-
-    <section class="hero practice">
-
-      <div class="stats">
-        <div class="stat">
-          <div class="stat-label">Richtig</div>
-          <div class="stat-value" id="score">0</div>
-        </div>
-        <div class="stat">
-          <div class="stat-label">Trefferquote</div>
-          <div class="stat-value" id="accuracy">0%</div>
-        </div>
-        <div class="stat">
-          <div class="stat-label">Gesamt</div>
-          <div class="stat-value" id="total">0</div>
+    <header class="topbar">
+      <div class="brand">
+        <div class="logo">◉</div>
+        <div>
+          <div class="brand-title">Übungsmodus</div>
+          <div class="brand-subtitle">Freies Üben: Echt vs. KI</div>
         </div>
       </div>
+      <a class="ghost link" href="index.html">← Menü</a>
+    </header>
 
-      <!-- NEUES LAYOUT -->
-      <div class="practice-row">
+    <main class="practice-container">
+      <section class="hero practice">
 
-        <!-- Bild -->
-        <div class="img-wrap">
-          <img id="faceImg" alt="Gesicht für die Übung" />
-          <div class="badge" id="feedbackBadge"></div>
+        <div class="practice-top">
+          <div class="stats">
+            <div class="stat">
+              <div class="stat-label">Richtig</div>
+              <div class="stat-value" id="score">0</div>
+            </div>
+            <div class="stat">
+              <div class="stat-label">Trefferquote</div>
+              <div class="stat-value" id="accuracy">0%</div>
+            </div>
+            <div class="stat">
+              <div class="stat-label">Gesamt</div>
+              <div class="stat-value" id="total">0</div>
+            </div>
+          </div>
         </div>
 
-        <!-- Buttons rechts -->
-        <div class="side-controls">
-          <button class="primary big" id="btnReal">Echt</button>
-          <button class="primary big" id="btnFake">KI</button>
-          <button class="ghost next" id="btnNext" disabled>Weiter</button>
+        <div class="practice-row">
+
+          <!-- Bild -->
+          <div class="img-wrap">
+            <img id="faceImg" alt="Gesicht für die Übung" />
+          </div>
+
+          <!-- Rechte Seite -->
+          <div class="side-controls">
+
+            <button class="primary big" id="btnReal">Echt</button>
+            <button class="primary big" id="btnFake">KI</button>
+
+            <!-- Feedback Bereich -->
+            <div class="result-box">
+              <div class="badge" id="feedbackBadge"></div>
+              <div class="result-text" id="resultText"></div>
+            </div>
+
+            <button class="ghost next" id="btnNext" disabled>Weiter</button>
+
+          </div>
+
         </div>
 
-      </div>
+      </section>
+    </main>
 
-      <div class="feedback" id="feedback"></div>
-
-    </section>
-
-  </main>
-
-  <script src="practice.js"></script>
-</body>
+    <script src="practice.js"></script>
+  </body>
 </html>
