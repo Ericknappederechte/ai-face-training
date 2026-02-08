@@ -7,7 +7,7 @@
 })();
 
 const imgEl = document.getElementById("faceImg");
-const feedbackEl = document.getElementById("feedback");
+const feedbackEl = document.getElementById("feedback"); // bleibt im DOM, wird aber nicht genutzt
 const badgeEl = document.getElementById("feedbackBadge");
 
 const scoreEl = document.getElementById("score");
@@ -45,21 +45,27 @@ function shuffle(arr) {
   return arr;
 }
 
-function pickNext() {
+function resetUIForNext() {
+  // Badge reset
   badgeEl.textContent = "";
   badgeEl.className = "badge";
+
+  // Kein Text-Feedback (wir setzen es bewusst immer leer)
   feedbackEl.textContent = "";
   feedbackEl.className = "feedback";
 
   answered = false;
   btnNext.disabled = true;
   setAnswerButtonsEnabled(false);
+}
+
+function pickNext() {
+  resetUIForNext();
 
   if (!pool.length) {
+    // Optionaler Hinweis — kannst du auch komplett entfernen
     feedbackEl.textContent =
-      "Keine Bilder gefunden. Prüfe data/images.json und die Ordner assets/images/real & assets/images/fake.";
-    setAnswerButtonsEnabled(false);
-    btnNext.disabled = true;
+      "Keine Bilder gefunden. Prüfe data/images.json und assets/images/Real & assets/images/Fake.";
     return;
   }
 
@@ -71,7 +77,7 @@ function pickNext() {
   };
 
   imgEl.onerror = () => {
-    // Wenn ein Bild nicht lädt, entfernen wir es aus dem Pool und versuchen das nächste
+    // Bild entfernen und nächstes versuchen
     pool = pool.filter((x) => x.src !== current.src);
     pickNext();
   };
@@ -85,27 +91,25 @@ function answer(label) {
 
   const correct = current.label === label;
   total++;
-
   if (correct) score++;
 
   updateStats();
 
+  // Nur Badge anzeigen (kein Text)
   badgeEl.textContent = correct ? "✓" : "✕";
   badgeEl.classList.toggle("ok", correct);
   badgeEl.classList.toggle("bad", !correct);
 
-  feedbackEl.textContent = correct
-    ? "Richtig."
-    : `Falsch. Das Bild war: ${current.label === "real" ? "Echt" : "KI"}.`;
-
-  feedbackEl.className = "feedback " + (correct ? "ok" : "bad");
+  // Text bleibt leer
+  feedbackEl.textContent = "";
+  feedbackEl.className = "feedback";
 
   btnNext.disabled = false;
 }
 
 btnReal.addEventListener("click", () => answer("real"));
 btnFake.addEventListener("click", () => answer("fake"));
-btnNext.addEventListener("click", () => pickNext());
+btnNext.addEventListener("click", pickNext);
 
 async function init() {
   updateStats();
